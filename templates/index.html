@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Posting Authenticity Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="container">
+    <div class="title">Job Posting Authenticity Checker</div>
+    <div class="content">
+      <form action="/" method="POST">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details required">Job Title</span>
+            <input
+              type="text"
+              name="title"
+              placeholder="e.g. Software Engineer"
+              required
+              value="{{ form_data.get('title', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details required">Location</span>
+            <input
+              type="text"
+              name="location"
+              placeholder="e.g. New York, NY"
+              required
+              value="{{ form_data.get('location', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Department</span>
+            <input
+              type="text"
+              name="department"
+              placeholder="e.g. IT Department"
+              value="{{ form_data.get('department', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Salary Range</span>
+            <input
+              type="text"
+              name="salary_range"
+              placeholder="e.g. 70,000 - 90,000"
+              value="{{ form_data.get('salary_range', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details required">Company Profile</span>
+            <textarea
+              name="company_profile"
+              rows="3"
+              placeholder="Brief company info"
+              required
+            >{{ form_data.get('company_profile', '') }}</textarea>
+          </div>
+          <div class="input-box">
+            <span class="details required">Job Description</span>
+            <textarea
+              name="description"
+              rows="3"
+              placeholder="Job responsibilities"
+              required
+            >{{ form_data.get('description', '') }}</textarea>
+          </div>
+          <div class="input-box">
+            <span class="details required">Requirements</span>
+            <textarea
+              name="requirements"
+              rows="3"
+              placeholder="Required skills and experience"
+              required
+            >{{ form_data.get('requirements', '') }}</textarea>
+          </div>
+          <div class="input-box">
+            <span class="details">Benefits</span>
+            <textarea
+              name="benefits"
+              rows="3"
+              placeholder="e.g. Health insurance, paid time off"
+            >{{ form_data.get('benefits', '') }}</textarea>
+          </div>
+          <div class="input-box">
+            <span class="details required">Telecommuting</span>
+            <select name="telecommuting" required>
+              <option value="0" {% if form_data.get('telecommuting') == '0' %}selected{% endif %}>
+                No
+              </option>
+              <option value="1" {% if form_data.get('telecommuting') == '1' %}selected{% endif %}>
+                Yes
+              </option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details required">Has Company Logo</span>
+            <select name="has_company_logo" required>
+              <option value="0" {% if form_data.get('has_company_logo') == '0' %}selected{% endif %}>
+                No
+              </option>
+              <option value="1" {% if form_data.get('has_company_logo') == '1' %}selected{% endif %}>
+                Yes
+              </option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details required">Has Questions</span>
+            <select name="has_questions" required>
+              <option value="0" {% if form_data.get('has_questions') == '0' %}selected{% endif %}>
+                No
+              </option>
+              <option value="1" {% if form_data.get('has_questions') == '1' %}selected{% endif %}>
+                Yes
+              </option>
+            </select>
+          </div>
+          <div class="input-box">
+            <span class="details">Employment Type</span>
+            <input
+              type="text"
+              name="employment_type"
+              placeholder="e.g. Full-time"
+              value="{{ form_data.get('employment_type', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Required Experience</span>
+            <input
+              type="text"
+              name="required_experience"
+              placeholder="e.g. Mid-Senior level"
+              value="{{ form_data.get('required_experience', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Required Education</span>
+            <input
+              type="text"
+              name="required_education"
+              placeholder="e.g. Bachelor's Degree"
+              value="{{ form_data.get('required_education', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Industry</span>
+            <input
+              type="text"
+              name="industry"
+              placeholder="e.g. Software"
+              value="{{ form_data.get('industry', '') }}"
+            />
+          </div>
+          <div class="input-box">
+            <span class="details">Function</span>
+            <input
+              type="text"
+              name="function"
+              placeholder="e.g. Engineering"
+              value="{{ form_data.get('function', '') }}"
+            />
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Check Authenticity" />
+        </div>
+      </form>
+
+      {% if result %}
+      <div
+        class="prediction-result"
+        style="margin-top: 30px; font-size: 20px; font-weight: bold; color: {% if result == 'Real' %}green{% else %}red{% endif %};"
+      >
+        Prediction: {{ result }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
