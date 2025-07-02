@@ -40,6 +40,10 @@ A web application is created using Flask to make the model easy to use. It allow
 
 <p>This provides a user-friendly way to use the model without running scripts.</p>
 
+<p align="center">
+  <img src="https://github.com/kavyaag2607/Fake-Job-Posting-Detection/blob/main/Webpage.png?raw=true" alt="Web Page Preview">
+</p>
+
 <h2>How to Run</h2>
 
 <ol>
