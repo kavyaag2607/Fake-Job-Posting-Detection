@@ -1,0 +1,146 @@
+/* Import Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  background-color: #fff;
+  padding: 30px 35px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container .title {
+  font-size: 28px;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 4px;
+  width: 40px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+}
+
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+form .user-details .input-box {
+  flex: 1 1 calc(50% - 20px);
+  min-width: 240px;
+}
+
+form .input-box span.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+/* Add red star for required fields */
+form .input-box span.details.required::after {
+  content: " *";
+  color: red;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.user-details .input-box input,
+.user-details .input-box textarea,
+.user-details .input-box select {
+  height: 45px;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  resize: vertical;
+}
+
+.user-details .input-box textarea {
+  height: auto; /* allow growing with rows */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box textarea:focus,
+.user-details .input-box select:focus {
+  border-color: #9b59b6;
+  background-color: #f7f0ff;
+}
+
+form .button {
+  margin-top: 30px;
+}
+
+form .button input {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form .button input:hover {
+  background: linear-gradient(-135deg, #74ebd5, #acb6e5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-details {
+    flex-direction: column;
+  }
+
+  form .user-details .input-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  .container .title {
+    font-size: 22px;
+  }
+
+  form .button input {
+    font-size: 16px;
+  }
+}
